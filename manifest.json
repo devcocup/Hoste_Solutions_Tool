@@ -1,0 +1,47 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+    "manifest_version": 2,
+    "name": "Hoste Solutions - Tool 2",
+    "description": "Extension to save data on server",
+    "version": "3.1.10",
+    "permissions": [
+        "contextMenus",
+        "activeTab",
+        "tabs",
+        "<all_urls>",
+        "storage",
+        "alarms", 
+        "notifications"
+    ],
+    "incognito": "split",
+    "background": {
+        "scripts": [
+            "thirdParty/jquery-3.3.1.min.js",
+            "thirdParty/mousetrap.min.js",
+            "dist/js/background/popup.js",
+            "dist/js/services/search.service.js"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [
+                "thirdParty/jquery-3.3.1.min.js",
+                "thirdParty/mousetrap.min.js",
+                "dist/js/content/content.js"
+            ]
+        }
+    ],
+    "icons": {
+        "16": "dist/img/icons/icon_16.png",
+        "48": "dist/img/icons/icon_48.png",
+        "128": "dist/img/icons/icon_128.png"
+    },
+    "browser_action": {
+        "default_popup": "dist/html/popup.html"
+    },
+    "content_security_policy": "script-src 'self'; object-src 'self'"
+}
